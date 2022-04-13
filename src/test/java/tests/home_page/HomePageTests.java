@@ -22,5 +22,14 @@ public class HomePageTests extends TestBase {
         Assert.assertTrue(homePage.homeLinkIsVisible(), "Home Link is invisible");
     }
 
-
+    @Test
+    public void changeLanguageTest() {
+        String lang = "ru";
+        String expTextBasketButton = "Посмотреть корзину";
+        String expTextGoButton = "Выполнить";
+        homePage.selectLanguage(lang);
+        homePage.clickOnGoButton();
+        Assert.assertEquals(homePage.getTextFromGoButton(),expTextGoButton, "Texts are differents!!!");
+        Assert.assertEquals(homePage.getTextFromBasketButton(),expTextBasketButton, "Texts are differents!!!");
+    }
 }

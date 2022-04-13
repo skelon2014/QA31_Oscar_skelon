@@ -39,6 +39,5 @@ public class RegistrationTests extends TestBase {
         loginAndRegisterPage.fillConfirmPasswordField(password);
         loginAndRegisterPage.clickOnRegisterButton();
         Assert.assertTrue(homePage.registerSuccessMessageIsDisplayed());
-
     }
 }
