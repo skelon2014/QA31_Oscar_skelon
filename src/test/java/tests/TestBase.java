@@ -6,7 +6,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 public class TestBase {
-    WebDriver driver;
+    public WebDriver driver;
 
     @BeforeMethod
     public void setDriver(){
@@ -18,6 +18,7 @@ public class TestBase {
     }
     @AfterMethod
     public void teardown(){
+        driver.close();
         driver.quit();
     }
 }
