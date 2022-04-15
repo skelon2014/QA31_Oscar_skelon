@@ -3,6 +3,7 @@ package tests.home_page;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import tests.TestBase;
@@ -29,7 +30,16 @@ public class HomePageTests extends TestBase {
         String expTextGoButton = "Выполнить";
         homePage.selectLanguage(lang);
         homePage.clickOnGoButton();
-        Assert.assertEquals(homePage.getTextFromGoButton(),expTextGoButton, "Texts are differents!!!");
-        Assert.assertEquals(homePage.getTextFromBasketButton(),expTextBasketButton, "Texts are differents!!!");
+        Assert.assertEquals(homePage.getTextFromGoButton(), expTextGoButton, "Texts are differents!!!");
+        Assert.assertEquals(homePage.getTextFromBasketButton(), expTextBasketButton, "Texts are differents!!!");
+    }
+
+    @Test(dataProviderClass = DataProviders.class, dataProvider = "readingDataFromFile")
+    public void changeLanguageTestDataProvider(String lang, String expTextGoButton) {
+       // String lang = "ru";
+       // String expTextGoButton = "Выполнить";
+        homePage.selectLanguage(lang);
+        homePage.clickOnGoButton();
+        Assert.assertEquals(homePage.getTextFromGoButton(), expTextGoButton, "Texts are differents!!!");
     }
 }
