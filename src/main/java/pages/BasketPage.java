@@ -6,4 +6,5 @@ public class BasketPage extends PageBase{
     public BasketPage(WebDriver driver) {
         super(driver);
     }
+
 }

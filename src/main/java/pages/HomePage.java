@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
 
 import java.util.List;
 
@@ -9,6 +10,8 @@ public class HomePage extends PageBase {
     public HomePage(WebDriver driver) {
         super(driver);
     }
+
+    LoginAndRegisterPage loginAndRegisterPage;
 
     @FindBy(xpath = "//a[contains(.,'Oscar')]")
     WebElement homePageLink;
@@ -23,6 +26,15 @@ public class HomePage extends PageBase {
     WebElement goButton;
     @FindBy(css = ".basket-mini a.btn.btn-default")
     WebElement basketButton;
+    @FindBy(xpath = "//input[@id='id_login-username']")
+    WebElement emailField;
+    @FindBy(xpath = "//input[@id='id_login-password']")
+    WebElement passwordField;
+    @FindBy(css = "button[value='Log In']")
+    WebElement loginButton;
+    @FindBy(id = "\"register_form")
+    WebElement registerForm;
+
 
     public boolean homeLinkIsVisible() {
         return homePageLink.isDisplayed();
@@ -53,5 +65,13 @@ public class HomePage extends PageBase {
     public String getTextFromBasketButton() {
         System.out.println(basketButton.getText());
         return basketButton.getText();
+    }
+    public void login(String email, String password){
+        clickToLoginAndRegisterButton();
+   //     Assert.assertTrue(loginAndRegisterPage.loginAndRegistrationFormIsOpened());
+        inputText(emailField,email);
+        inputText(passwordField,password);
+        click(loginButton);
+        Assert.assertTrue(driver.findElement(By.xpath("//a[@id='logout_link']")).isEnabled());
     }
 }
