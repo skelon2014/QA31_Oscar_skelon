@@ -25,11 +25,13 @@ public class ProfileTests extends TestBase {
     }
     @Test
     public void changePasswordPositive(){
+        String p1 = "Durdom2@14";
+        String p2 = "Durdom2@144";
         homePage.login(email,password);
         loginAndRegisterPage.clickOnAccountButtom();
         Assert.assertTrue(profilePage.profileMessageIsVisible());
         profilePage.clickOnChangePasswordButton();
-        profilePage.changePassword();
+        profilePage.changePassword(p1,p2);
         Assert.assertTrue(profilePage.passwordUpdates());
 
 

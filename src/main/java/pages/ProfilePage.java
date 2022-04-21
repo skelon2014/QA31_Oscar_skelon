@@ -23,12 +23,16 @@ public class ProfilePage extends PageBase{
        changePassword.click();
     }
 
-    public void changePassword() {
-        inputText(driver.findElement(By.cssSelector("#id_old_password")), "Durdom2@14");
-        inputText(driver.findElement(By.cssSelector("#id_new_password1")),"Durdom2@144" );
-        inputText(driver.findElement(By.cssSelector("#id_new_password2")),"Durdom2@144" );
+    public void changePassword(String p1, String p2) {
+        inputText(driver.findElement(By.cssSelector("#id_old_password")), p1);
+        inputText(driver.findElement(By.cssSelector("#id_new_password1")),p2 );
+        inputText(driver.findElement(By.cssSelector("#id_new_password2")),p2 );
         click(driver.findElement(By.xpath("//button[.='Save']")));
-
+        clickOnChangePasswordButton();
+        inputText(driver.findElement(By.cssSelector("#id_old_password")), p2);
+        inputText(driver.findElement(By.cssSelector("#id_new_password1")),p1 );
+        inputText(driver.findElement(By.cssSelector("#id_new_password2")),p1 );
+        click(driver.findElement(By.xpath("//button[.='Save']")));
     }
 
     public boolean passwordUpdates() {
